@@ -49,7 +49,7 @@ class Login extends Component {
                 <Container className="login-container">
                     <Row>
                         <Col className="login-form">
-                        <Alert className={message ? "message-display-on" : "message-display-off"} variant={auth ? "success" : "danger"}>
+                        <Alert className={message ? "message-display-on" : ""} variant={auth ? "success" : "danger"}>
                             {message}
                         </Alert>
                             <Form>
