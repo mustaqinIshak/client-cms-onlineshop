@@ -1,0 +1,31 @@
+.login {
+    position: relative;
+    height: 100vh;
+    background-color: #F2F4F4;
+}
+
+.login-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: flex;
+    justify-content: center;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.login-form {
+    background-color: white;
+    padding: 20px;
+    border: 0px solid #dfe3e7;
+    border-radius: 0.267rem;
+    box-shadow: -8px 12px 18px 0 rgb(25 42 70 / 13%);
+    text-align:left ;
+}
+
+.message-display-off {
+    display: none;
+}
+
+.message-display-on {
+}

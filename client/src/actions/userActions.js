@@ -2,7 +2,6 @@ import { userService } from '../services';
 import { history } from '../helpers';
 
 function login(username, password) {
-    console.log("ini di action") 
     return dispatch => {
         let apiEndpoint = 'user/login';
         let payload = {
@@ -11,8 +10,11 @@ function login(username, password) {
         }
         userService.post(apiEndpoint, payload)
         .then((response) => {
-            console.log(response.data)
-            if (response.data.user.token) {
+            if(!response.data.auth) {
+                console.log(response.data)
+                dispatch(failLogin(response.data))
+            }
+            else if (response.data.user.token) {
                 localStorage.setItem('token', response.data.user.token)
                 localStorage.setItem('auth', response.data.auth)
                 dispatch(setUserDetails(response.data))
@@ -36,6 +38,13 @@ export function setUserDetails(user) {
         type: "LOGIN_SUCCESS",
         auth: user.auth,
         token: user.token
+    }
+}
+
+export function failLogin(data) {
+    return {
+        type: "LOGIN_FAILL",
+        data: data
     }
 }
 

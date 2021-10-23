@@ -6,8 +6,8 @@ function post(apiEndpoint, payload) {
     .then((response) => {
         return response
     })
-    .catch((err) => {
-        console.log(err)
+    .catch((error) => {
+        return error.response
     })
 }
 

@@ -6,6 +6,7 @@ import Login from "./components/login/login.component"
 import Home from "./components/home/home.componet"
 import { history } from "./helpers"
 import { PrivateRoute } from "./components/PrivateRoute"
+import 'bootstrap/dist/css/bootstrap.css';
 
 import './App.css';
 

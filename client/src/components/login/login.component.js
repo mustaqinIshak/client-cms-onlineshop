@@ -6,9 +6,8 @@ import { connect } from "react-redux"
 import {userActions} from "../../actions"
 import { withRouter } from "react-router"
 import { history } from '../../helpers'
+import {Container, Row, Col, Button, Form, Alert} from "react-bootstrap"
 import "./style.css"
-import { withStyles } from "@material-ui/styles"
-import { Style } from "@material-ui/icons"
 
 class Login extends Component {
     constructor(props) {
@@ -38,29 +37,35 @@ class Login extends Component {
         const { email, password } = this.state
         const { dispatch } = this.props
         if (email, password) {
-            console.log("ini di button login")
-            console.log(dispatch)
             dispatch(userActions.login(email, password))
         }
     }
 
+
     render() {
+        const {auth, message} = this.props
         return (
             <div className="login">
-
-                <div className="login-field">
-                        <div className="email">
-                            <label name="femail">Username :</label>
-                            <input type="text" id="femail" value={this.state.email} onChange={this.handleChange('email')} />
-                        </div>
-                        <div className="password">
-                            <label name="fPassword">Password :</label>
-                            <input type="password" id="fPassword" value={this.state.password} onChange={this.handleChange('password')} />
-                        </div>
-                        <div className="login-button">
-                            <button onClick={(event) => this.login()}>Login</button>
-                        </div>
-                </div>
+                <Container className="login-container">
+                    <Row>
+                        <Col className="login-form">
+                        <Alert className={message ? "message-display-on" : "message-display-off"} variant={auth ? "success" : "danger"}>
+                            {message}
+                        </Alert>
+                            <Form>
+                                <Form.Group className="mb-3">
+                                    <Form.Label>Username :</Form.Label>
+                                    <Form.Control type="text" placeHolder="example@mail.com" value={this.state.email} onChange={this.handleChange('email')}/>
+                                </Form.Group>
+                                <Form.Group className="mb-3">
+                                    <Form.Label>Password :</Form.Label>
+                                    <Form.Control type="password" placeHolder="Password" value={this.state.password} onChange={this.handleChange('password')}/>
+                                </Form.Group>
+                                <Button onClick={(event) => this.login()}>Login</Button>
+                            </Form>
+                        </Col>
+                    </Row>
+                </Container>
             </div>
         )
     }
@@ -69,9 +74,9 @@ class Login extends Component {
 }
 
 const mapStateToProps = (state) => {
-    console.log(state, "ini mapStateToProps")
     return {
-        auth: state.auth
+        auth: state.auth.auth,
+        message: state.auth.message
     }
 }
 
