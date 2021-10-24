@@ -6,7 +6,7 @@ import { connect } from "react-redux"
 import {userActions} from "../../actions"
 import { withRouter } from "react-router"
 import { history } from '../../helpers'
-import {Container, Row, Col, Button, Form, Alert} from "react-bootstrap"
+import {Container, Row, Col, Button, Form, Alert, Spinner} from "react-bootstrap"
 import "./style.css"
 
 class Login extends Component {
@@ -17,6 +17,7 @@ class Login extends Component {
             email: '',
             password: '',
             showPassword: false,
+            loading: false,
         }
     }
 
@@ -34,6 +35,9 @@ class Login extends Component {
 
     login = event => {
         // event.preventDefault()
+        this.setState({
+            loading: !this.loading
+        })
         const { email, password } = this.state
         const { dispatch } = this.props
         if (email, password) {
@@ -49,7 +53,7 @@ class Login extends Component {
                 <Container className="login-container">
                     <Row>
                         <Col className="login-form">
-                        <Alert className={message ? "message-display-on" : ""} variant={auth ? "success" : "danger"}>
+                        <Alert className={message ? "" : "message-display-off"} variant={auth ? "success" : "danger"}>
                             {message}
                         </Alert>
                             <Form>
@@ -61,7 +65,12 @@ class Login extends Component {
                                     <Form.Label>Password :</Form.Label>
                                     <Form.Control type="password" placeHolder="Password" value={this.state.password} onChange={this.handleChange('password')}/>
                                 </Form.Group>
-                                <Button onClick={(event) => this.login()}>Login</Button>
+                                {this.loading ? <Button variant="primary" disabled>
+                                                <Spinner as="span" animation="border" size="sm" role="status" aria-hidden="true" />
+                                                <span className="visually-hidden">...loading</span>
+                                            </Button> 
+                                        : <Button onClick={(event) => this.login()} variant="primary">Login</Button>
+                                }
                             </Form>
                         </Col>
                     </Row>
