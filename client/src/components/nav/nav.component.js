@@ -1,23 +1,23 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
-import "./nav.css"
+import SubMenu from "./subNav.component"
 import { NavData } from "../navData";
+import "./nav.css"
 
 class Nav extends Component {
 
     render() {
         return(
-            <nav>
+            <nav className="sidebar-nav">
                 <div className="logo">
                     <span>Logo</span>
                 </div>
                 <div className="menu-nav">
-                    <ul>
-                        {NavData.map((item, index) => {
-                            
-                        })}
-                    </ul>
+                    {NavData.map((item, index) => {
+                        return (
+                            <SubMenu item={item} key={index} />
+                        )
+                    })}
                 </div>
             </nav>
         )

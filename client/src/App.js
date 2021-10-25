@@ -7,6 +7,7 @@ import Home from "./components/home/home.component"
 import { history } from "./helpers"
 import { PrivateRoute } from "./components/PrivateRoute"
 import 'bootstrap/dist/css/bootstrap.css';
+import Nav from "./components/nav/nav.component"
 
 import './App.css';
 
@@ -14,6 +15,7 @@ function App() {
   return (
     <div className="App">
       <Router history={history}>
+      <Nav />
         <div>
           <Switch>
             <PrivateRoute exact path='/home' component={Home}/>

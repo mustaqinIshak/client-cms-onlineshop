@@ -56,11 +56,11 @@ class Login extends Component {
                             <Form>
                                 <Form.Group className="mb-3">
                                     <Form.Label>Username :</Form.Label>
-                                    <Form.Control type="text" placeHolder="example@mail.com" value={this.state.email} onChange={this.handleChange('email')}/>
+                                    <Form.Control type="email" placeHolder="example@mail.com" value={this.state.email} onChange={this.handleChange('email')} required/>
                                 </Form.Group>
                                 <Form.Group className="mb-3">
                                     <Form.Label>Password :</Form.Label>
-                                    <Form.Control type="password" placeHolder="Password" value={this.state.password} onChange={this.handleChange('password')}/>
+                                    <Form.Control type="password" placeHolder="Password" value={this.state.password} onChange={this.handleChange('password')} required/>
                                 </Form.Group>
                                <Button onClick={(event) => this.login()} variant="primary">Login</Button>
 
