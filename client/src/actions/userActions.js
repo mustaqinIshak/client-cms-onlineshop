@@ -10,6 +10,7 @@ function login(username, password) {
         }
         userService.post(apiEndpoint, payload)
         .then((response) => {
+            console.log(response.data)
             if(!response.data.auth) {
                 console.log(response.data)
                 dispatch(failLogin(response.data))

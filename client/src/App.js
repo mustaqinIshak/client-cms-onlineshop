@@ -3,7 +3,7 @@
 import React, {Component} from "react"
 import {Router, Switch, Route} from 'react-router-dom'
 import Login from "./components/login/login.component"
-import Home from "./components/home/home.componet"
+import Home from "./components/home/home.component"
 import { history } from "./helpers"
 import { PrivateRoute } from "./components/PrivateRoute"
 import 'bootstrap/dist/css/bootstrap.css';

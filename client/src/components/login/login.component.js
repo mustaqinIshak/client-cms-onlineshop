@@ -35,9 +35,6 @@ class Login extends Component {
 
     login = event => {
         // event.preventDefault()
-        this.setState({
-            loading: !this.loading
-        })
         const { email, password } = this.state
         const { dispatch } = this.props
         if (email, password) {
@@ -65,12 +62,8 @@ class Login extends Component {
                                     <Form.Label>Password :</Form.Label>
                                     <Form.Control type="password" placeHolder="Password" value={this.state.password} onChange={this.handleChange('password')}/>
                                 </Form.Group>
-                                {this.loading ? <Button variant="primary" disabled>
-                                                <Spinner as="span" animation="border" size="sm" role="status" aria-hidden="true" />
-                                                <span className="visually-hidden">...loading</span>
-                                            </Button> 
-                                        : <Button onClick={(event) => this.login()} variant="primary">Login</Button>
-                                }
+                               <Button onClick={(event) => this.login()} variant="primary">Login</Button>
+
                             </Form>
                         </Col>
                     </Row>
