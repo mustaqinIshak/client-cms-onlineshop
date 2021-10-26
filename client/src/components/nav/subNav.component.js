@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import { Link } from "react-router-dom";
+import "./subNav.css"
 
 const SubMenu = ({item}) => {
     const [subnav, setSubnav] = useState(false);
@@ -23,7 +24,7 @@ const SubMenu = ({item}) => {
             </Link>
             {subnav && item.subNav.map((item, index) => {
                 return(
-                    <Link to={item.path} key={index}>
+                    <Link className="dropdown-link" to={item.path} key={index}>
                         {item.icon}
                         <span className="sidebar-label">{item.name}</span>
                     </Link>

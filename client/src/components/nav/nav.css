@@ -1,9 +1,14 @@
 .sidebar-nav {
-    background-color: blueviolet;
+    background-color: #15171c;
     width: 280px;
     height: 100vh;
     display: flex;
     justify-content: center;
     position: fixed;
     top: 0;
+    transition: 350ms;
+}
+
+.sidebar-warp {
+    width: 100%;
 }
