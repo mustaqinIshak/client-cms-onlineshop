@@ -10,13 +10,14 @@ const authReducer = (state = initialState, action) => {
             return {
                 loggingin: true,
                 auth: action.auth,
-                token: action.token
+                token: action.token,
+                user: action.user
             }
         case "LOGIN_FAILL" :
             return {
                 ...state,
                 auth: action.data.auth,
-                message: action.data.message
+                message: action.data.message,
             }
         case 'LOGOUT_SUCCESS' :
             return {

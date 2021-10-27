@@ -1,10 +1,8 @@
 'use strict'
 
 import React, { Component } from "react"
-import PropTypes from "prop-types"
 import { connect } from "react-redux"
 import {userActions} from "../../actions"
-import { withRouter } from "react-router"
 import { history } from '../../helpers'
 import {Container, Row, Col, Button, Form, Alert, Spinner} from "react-bootstrap"
 import "./style.css"

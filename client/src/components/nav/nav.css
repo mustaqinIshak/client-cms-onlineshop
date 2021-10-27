@@ -12,3 +12,24 @@
 .sidebar-warp {
     width: 100%;
 }
+
+
+.logout:hover{
+    background-color: #234d07;
+    border-left: 4px solid #72FF13;
+    cursor: pointer;
+}
+
+.logout-button {
+    display: flex;
+    color: #e1e9fc;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    height: 60px;
+    font-size: 18px;
+}
+
+.logout-button span {
+    margin-left: 16px; 
+}

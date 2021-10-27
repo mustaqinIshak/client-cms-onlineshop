@@ -38,7 +38,8 @@ export function setUserDetails(user) {
     return {
         type: "LOGIN_SUCCESS",
         auth: user.auth,
-        token: user.token
+        token: user.token,
+        user: user.use
     }
 }
 
