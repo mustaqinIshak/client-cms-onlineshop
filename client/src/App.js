@@ -1,6 +1,6 @@
 "use strict"
 
-import React, {Component} from "react"
+import React from "react"
 import {Router, Switch, Route} from 'react-router-dom'
 import Login from "./components/login/login.component"
 import Home from "./components/home/home.component"

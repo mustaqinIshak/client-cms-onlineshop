@@ -3,14 +3,25 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import { withRouter } from 'react-router' 
-
+import { Row, Col, Container } from "react-bootstrap"
+import Card from '../card/card.component'
 
 class Home extends Component {
     render() {
         return(
-            <div>
-                <h1>ini Home</h1>
-            </div>
+            <Container>
+                <Row>
+                    <Col>
+                        <Card />
+                    </Col>
+                </Row>
+                <Row>
+
+                </Row>
+                <Row>
+
+                </Row>
+            </Container>
         )
     }
 }

@@ -28,10 +28,10 @@ class Nav extends Component {
                         })}
                     </div>
                     <div className="logout">
-                        <div className="logout-button">
+                        <div className="logout-button" onClick={(event) => this.logout()}>
                             <div>
                                 <AiIcons.AiOutlinePoweroff />
-                                <span onClick={(event) => this.logout()}>logout</span>
+                                <span>logout</span>
                             </div>
                         </div>
                     </div>
