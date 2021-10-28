@@ -9,9 +9,9 @@ import Card from '../card/card.component'
 class Home extends Component {
     render() {
         return(
-            <Container>
+            <Container className="home">
                 <Row>
-                    <Col>
+                    <Col xs={12} md={6} xl={4} >
                         <Card />
                     </Col>
                 </Row>

@@ -1,5 +1,5 @@
 .card {
-    position: relative;
+    /* position: relative; */
     display: flex;
     flex-direction: column;
     min-width: none;
@@ -12,4 +12,32 @@
     box-shadow: -8px 12px 18px 0 rgb(25 42 70 / 13%);
     transition: all .3s ease-in-out;
     background-color: royalblue;
+}
+
+.card-header {
+    padding: 1.4rem 1.7rem;
+}
+.card-content {
+    margin-top: 1rem;
+}
+
+.card-body {
+    display: flex;
+    padding: 1.7rem;
+    align-items: flex-end !important;
+    justify-content: space-between;    
+}
+
+.dashboard-content-left {
+    text-align: left;
+}
+
+.Image {
+    vertical-align: middle;
+    aspect-ratio: auto 220 / 220;
+}
+
+.image-responsive {
+    width: 100%;
+    height: auto;
 }
