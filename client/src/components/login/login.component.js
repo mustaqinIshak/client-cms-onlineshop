@@ -19,6 +19,18 @@ class Login extends Component {
         }
     }
 
+    // handleClose() {
+    //     this.setState({
+    //        loading: !this.loading
+    //     })
+    // }
+
+    Loading() {
+        console.log('jalan loading')
+        this.setState({
+            loading: !this.state.loading
+        })
+    }
     componentDidMount() {
         if (localStorage.getItem('auth')) {
             history.push('/home')
@@ -41,6 +53,7 @@ class Login extends Component {
     }
 
 
+
     render() {
         const {auth, message} = this.props
         return (
@@ -61,7 +74,6 @@ class Login extends Component {
                                     <Form.Control type="password" placeHolder="Password" value={this.state.password} onChange={this.handleChange('password')} required/>
                                 </Form.Group>
                                <Button onClick={(event) => this.login()} variant="primary">Login</Button>
-
                             </Form>
                         </Col>
                     </Row>

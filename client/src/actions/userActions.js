@@ -10,8 +10,14 @@ function login(username, password) {
         }
         userService.post(apiEndpoint, payload)
         .then((response) => {
-            console.log(response.data)
-            if(!response.data.auth) {
+            if(response === undefined) {
+                const data = {
+                    auth: false,
+                    message: 'server is down'
+                }
+                dispatch(failLogin(data))
+            }
+            else if(!response.data.auth) {
                 console.log(response.data)
                 dispatch(failLogin(response.data))
             }

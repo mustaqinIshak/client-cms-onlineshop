@@ -18,7 +18,9 @@ function Card() {
                         <Button variant="primary">Lihat Penjualan</Button>
                     </div>
                     <div className="dashboard-content-right">
-                        <Image src={COIN} className="image-responsive" width={60} height={60} />
+                        <div style={{width: "100%"}}>
+                            <Image src={COIN} className="image-responsive" width={60} height={60} />
+                        </div>
                     </div>
                 </div>
             </div>
