@@ -9,10 +9,10 @@ const SubMenu = ({item}) => {
     return (
         <div className="sidebar-button">
             <Link className="sidebar-link" to={item.path} onClick={item.subNav && showSubnav}>
-                <div>
-                    {item.icon}
+                    <div className="icon-menu">
+                        {item.icon}
+                    </div>
                     <span className="sidebar-label">{item.name}</span>
-                </div>
                 <div>
                     {item.subNav && subnav
                      ? item.iconOpened
@@ -25,7 +25,9 @@ const SubMenu = ({item}) => {
             {subnav && item.subNav.map((item, index) => {
                 return(
                     <Link className="dropdown-link" to={item.path} key={index}>
-                        {item.icon}
+                        <div className="icon-menu">
+                            {item.icon}
+                        </div>
                         <span className="sidebar-label">{item.name}</span>
                     </Link>
                 )

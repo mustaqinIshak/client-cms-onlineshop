@@ -12,23 +12,12 @@ class Home extends Component {
     render() {
         return(
             <div>
-                <Nav />           
+                <Nav />
                 <div className="home">
-                    <Container>
                         <Row>
-                            <Col xl={3}>
-                                <Card />
-                                <Card />
-  
-                            </Col>
+                            <Card />
+                            <Card />
                         </Row>
-                        <Row>
-
-                        </Row>
-                        <Row>
-
-                        </Row>
-                    </Container>
                 </div>
             </div>
         )

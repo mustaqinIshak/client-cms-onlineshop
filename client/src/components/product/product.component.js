@@ -1,12 +1,16 @@
 import React from 'react'
 import Nav from '../nav/nav.component'
+import {Container, Row, Col, Card, Button} from 'react-bootstrap'
+
 
 function Product() {
     return (
-        <div>
-            <Nav />
-            <span>ini Product</span>
-        </div>
+        <Container>
+            <Row>
+                <Col>
+                </Col>
+            </Row>
+        </Container>
     )
 }
 

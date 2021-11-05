@@ -11,6 +11,7 @@
 .sidebar-link:link, .sidebar-link:hover {
     list-style: none;
     text-decoration: none;
+    justify-content: flex-start;
     color: #e1e9fc;
 }
 
@@ -38,4 +39,16 @@
 .dropdown-link:hover {
     background: #632ce4;
     cursor: pointer;
+}
+
+@media only screen and ( max-width: 1024px ) {
+    .sidebar-button {
+        display: flex;
+        justify-content: center;
+    }
+
+    .icon-menu {
+        display: none;
+    }
+    
 }

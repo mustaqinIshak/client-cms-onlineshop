@@ -1,12 +1,37 @@
-.sidebar-nav {
+nav {
+    background: #15171c;
+    height: 80px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    
+}
+
+.logo-nav {
+    display: none;
+}
+
+.logo-side {
+    width: 80%;
+    margin: 20px;
+}
+
+.FA-Bar{
+    display: none;
+}
+
+.SidebarNav {
+    overflow: hidden;
     background-color: #15171c;
     width: 280px;
     height: 100vh;
     display: flex;
     justify-content: center;
     position: fixed;
-    top: 0;
+    top: 0; 
     transition: 350ms;
+    z-index: 10;
+    margin-right: 0 !important;
 }
 
 .sidebar-warp {
@@ -32,4 +57,39 @@
 
 .logout-button span {
     margin-left: 16px; 
+}
+
+@media only screen and (max-width: 1024px) {
+    .logo-nav {
+        display: block;
+        width: 30%;
+        margin-left: 20px;
+    }
+
+    .SidebarNav{
+        position: relative;
+        width: 100vw;
+    }
+
+    .logo-side {
+        display: none;
+    }
+    .logout-button {
+        display: flex;
+        justify-content: center;
+    }
+
+    .logo-logout {
+        display: none;
+    }
+
+    nav {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .logo-nav {
+        margin: 0;
+    }
+
 }

@@ -4,6 +4,9 @@ import SubMenu from "./subNav.component"
 import { NavData } from "../navData";
 import { userActions } from "../../actions";
 import * as AiIcons from "react-icons/ai"
+import * as FaIcons from "react-icons/fa"
+import { Image } from "react-bootstrap";
+import LogoAuswitch from "../../images/logo_auswitchvandley.svg"
 import "./nav.css"
 
 class Nav extends Component {
@@ -15,10 +18,20 @@ class Nav extends Component {
 
     render() {
         return(
-            <nav className="sidebar-nav">
+          <div>
+            <nav>
+                <div classname='FA-Bar'>
+                    <FaIcons.FaBars />
+                </div>
+                <div className='logo-nav'>
+                    <Image src={LogoAuswitch} />
+                </div>
+                <div></div>
+            </nav>
+            <div className="SidebarNav responsive">
                 <div className="sidebar-warp">
-                    <div className="logo">
-                        <span>Logo</span>
+                    <div className="logo-side">
+                    <Image src={LogoAuswitch} />
                     </div>
                     <div className="menu-nav">
                         {NavData.map((item, index) => {
@@ -30,13 +43,14 @@ class Nav extends Component {
                     <div className="logout">
                         <div className="logout-button" onClick={(event) => this.logout()}>
                             <div>
-                                <AiIcons.AiOutlinePoweroff />
+                                <AiIcons.AiOutlinePoweroff  className="logo-logout"/>
                                 <span>logout</span>
                             </div>
                         </div>
                     </div>
                 </div>
-            </nav>
+            </div>
+        </div>
         )
     }
 }
