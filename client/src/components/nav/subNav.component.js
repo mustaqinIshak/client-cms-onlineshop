@@ -1,13 +1,17 @@
 import React, {useState} from "react";
+import { ThemeProvider } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "./subNav.css"
 
-const SubMenu = ({item}) => {
+
+const SubMenu = ({item, showNavbar}) => {
+
+
     const [subnav, setSubnav] = useState(false);
     const showSubnav = () => setSubnav(!subnav)
 
     return (
-        <div className="sidebar-button">
+        <div className="sidebar-button" onClick={() => showNavbar()}>
             <Link className="sidebar-link" to={item.path} onClick={item.subNav && showSubnav}>
                     <div className="icon-menu">
                         {item.icon}

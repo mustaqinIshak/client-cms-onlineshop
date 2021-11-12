@@ -11,24 +11,52 @@ import "./nav.css"
 
 class Nav extends Component {
 
+    constructor(props) {
+        super(props)
+        this.showNavbar = this.showNavbar.bind(this)
+        this.state = {
+            showActive: false
+        }
+    }
+
+    showNavbar() {
+        const currentState = this.state.showActive
+        this.setState({
+            showActive: !currentState
+        })
+    }
+
+    handdleCallback = (childData) => {
+        this.setState({
+            showActive: childData
+        })
+    }
+    
     logout = event => {
         const {dispatch} = this.props
         dispatch(userActions.logout())
     }
-
+    
     render() {
+        const {username} = this.props
         return(
           <div>
             <nav>
-                <div classname='FA-Bar'>
-                    <FaIcons.FaBars />
+                <div>
+                    <div className='FA-Bar'>
+                        <FaIcons.FaBars onClick={this.showNavbar}/>
+                    </div>
+                    <div className='logo-nav'>
+                        <Image src={LogoAuswitch} />
+                    </div>
                 </div>
-                <div className='logo-nav'>
-                    <Image src={LogoAuswitch} />
+                <div>
+                    <div className="username">
+                        <span>Hello {username}</span>
+                    </div>
                 </div>
-                <div></div>
             </nav>
-            <div className="SidebarNav responsive">
+            <div className={this.state.showActive ? "SidebarNav active" : "SidebarNav"}>
                 <div className="sidebar-warp">
                     <div className="logo-side">
                     <Image src={LogoAuswitch} />
@@ -36,7 +64,7 @@ class Nav extends Component {
                     <div className="menu-nav">
                         {NavData.map((item, index) => {
                             return (
-                                <SubMenu item={item} key={index} />
+                                <SubMenu item={item} key={index} showNavbar={this.showNavbar}/>
                             )
                         })}
                     </div>
@@ -56,9 +84,11 @@ class Nav extends Component {
 }
 
 const mapStateToProps = state => {
-    const { loggedIn } = state.auth
+    const { loggedIn, username, accLevel } = state.auth
     return {
-        loggedIn
+        loggedIn,
+        username,
+        accLevel
     }
 }
 

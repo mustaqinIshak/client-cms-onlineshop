@@ -1,5 +1,5 @@
 import { userService } from '../services';
-import { history } from '../helpers';
+import { history } from '../helpers/helpers';
 
 function login(username, password) {
     return dispatch => {
@@ -24,6 +24,8 @@ function login(username, password) {
             else if (response.data.user.token) {
                 localStorage.setItem('token', response.data.user.token)
                 localStorage.setItem('auth', response.data.auth)
+                localStorage.setItem('username', response.data.user.name)
+                localStorage.setItem('accLevel', response.data.user.accesslevel)
                 dispatch(setUserDetails(response.data))
                 history.push('/home')
             }
@@ -45,7 +47,7 @@ export function setUserDetails(user) {
         type: "LOGIN_SUCCESS",
         auth: user.auth,
         token: user.token,
-        user: user.use
+        user: user.user
     }
 }
 

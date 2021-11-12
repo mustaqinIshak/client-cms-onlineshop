@@ -1,13 +1,16 @@
 let token = localStorage.getItem('token')
 let auth = localStorage.getItem('auth')
+let username = localStorage.getItem('username')
+let accLevel = localStorage.getItem('accLevel')
 
-const initialState = auth ? {loggedIn: true, auth, token} 
+const initialState = auth ? {loggedIn: true, auth, token, username, accLevel} 
                     : {}
 
 const authReducer = (state = initialState, action) => {
     switch(action.type) {
-        case 'LOGGIN_SUCCESS':
+        case 'LOGIN_SUCCESS':
             return {
+                ...state,
                 loggingin: true,
                 auth: action.auth,
                 token: action.token,

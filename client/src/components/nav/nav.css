@@ -2,9 +2,14 @@ nav {
     background: #15171c;
     height: 80px;
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
     align-items: center;
     
+}
+
+.username{
+    color: #e1e9fc;
+    margin-right: 2rem;
 }
 
 .logo-nav {
@@ -67,8 +72,14 @@ nav {
     }
 
     .SidebarNav{
-        position: relative;
+        position: fixed;
+        top: -100%;
         width: 100vw;
+        
+    }
+
+    .SidebarNav.active {
+        top: 0%;
     }
 
     .logo-side {
@@ -90,6 +101,11 @@ nav {
 
     .logo-nav {
         margin: 0;
+        /* width: 100%; */
+    }
+
+    .username {
+        display: none;
     }
 
 }
