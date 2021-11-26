@@ -7,6 +7,7 @@ import * as AiIcons from "react-icons/ai"
 import * as FaIcons from "react-icons/fa"
 import { Image } from "react-bootstrap";
 import LogoAuswitch from "../../images/logo_auswitchvandley.svg"
+import { Redirect } from "react-router";
 import "./nav.css"
 
 class Nav extends Component {
@@ -15,7 +16,8 @@ class Nav extends Component {
         super(props)
         this.showNavbar = this.showNavbar.bind(this)
         this.state = {
-            showActive: false
+            showActive: false,
+            redirect: false
         }
     }
 
@@ -32,13 +34,18 @@ class Nav extends Component {
         })
     }
     
-    logout = event => {
+    logout = (event) => {
         const {dispatch} = this.props
         dispatch(userActions.logout())
+        this.setState({
+            redirect: true
+        })
     }
     
     render() {
         const {username} = this.props
+        const {redirect} = this.state
+
         return(
           <div>
             <nav>
@@ -73,6 +80,7 @@ class Nav extends Component {
                             <div>
                                 <AiIcons.AiOutlinePoweroff  className="logo-logout"/>
                                 <span>logout</span>
+                                {redirect ? <Redirect to='/' /> : ''}
                             </div>
                         </div>
                     </div>

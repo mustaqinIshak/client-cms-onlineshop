@@ -1,5 +1,5 @@
 import { userService } from '../services';
-import { history } from '../helpers/helpers';
+import { history } from '../helpers';
 
 function login(username, password) {
     return dispatch => {

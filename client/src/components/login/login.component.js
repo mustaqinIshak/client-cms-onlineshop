@@ -3,7 +3,7 @@
 import React, { Component } from "react"
 import { connect } from "react-redux"
 import {userActions} from "../../actions"
-import { history } from '../../helpers'
+import { Redirect } from "react-router"
 import {Container, Row, Col, Button, Form, Alert, Spinner} from "react-bootstrap"
 import "./style.css"
 
@@ -16,24 +16,15 @@ class Login extends Component {
             password: '',
             showPassword: false,
             loading: false,
+            redirect: false,
         }
     }
 
-    // handleClose() {
-    //     this.setState({
-    //        loading: !this.loading
-    //     })
-    // }
-
-    Loading() {
-        console.log('jalan loading')
-        this.setState({
-            loading: !this.state.loading
-        })
-    }
     componentDidMount() {
         if (localStorage.getItem('auth')) {
-            history.push('/home')
+           this.setState({
+               redirect: true
+           })
         }
     }
 
@@ -44,11 +35,11 @@ class Login extends Component {
     }
 
     login = event => {
-        // event.preventDefault()
         const { email, password } = this.state
         const { dispatch } = this.props
         if (email, password) {
-            dispatch(userActions.login(email, password))
+            event.preventDefault()
+            dispatch(userActions.login(email, password, this.props.history))
         }
     }
 
@@ -56,6 +47,10 @@ class Login extends Component {
 
     render() {
         const {auth, message} = this.props
+        const {redirect} = this.state
+        if(auth || redirect) {
+            return <Redirect to='/home' />
+        }
         return (
             <div className="login">
                 <Container className="login-container">

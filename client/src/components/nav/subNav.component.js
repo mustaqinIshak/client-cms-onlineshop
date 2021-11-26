@@ -5,8 +5,6 @@ import "./subNav.css"
 
 
 const SubMenu = ({item, showNavbar}) => {
-
-
     const [subnav, setSubnav] = useState(false);
     const showSubnav = () => setSubnav(!subnav)
 
