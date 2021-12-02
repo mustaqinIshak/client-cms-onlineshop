@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useEffect } from "react";
 import { connect } from "react-redux";
 import SubMenu from "./subNav.component"
 import { NavData } from "../navData";
@@ -36,7 +36,7 @@ class Nav extends Component {
     
     logout = (event) => {
         const {dispatch} = this.props
-        dispatch(userActions.logout())
+        dispatch(userActions.Logout())
         this.setState({
             redirect: true
         })

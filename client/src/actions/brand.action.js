@@ -6,6 +6,7 @@ function showAllBrands() {
     return dispatch => {
         brandService.get(apiEndpoint)
         .then((response) => {
+            // console.log(response)
             if(response.data.status === 'Token is Expired') {
                 dispatch(faillGetBrands())
             } else {
@@ -26,7 +27,11 @@ function createBrand(brand) {
     return dispatch => {
         brandService.post(apiEndpoint, brand)
         .then(response => {
-            console.log(response)
+            // if(!response.data.success) {
+            //     const nameError = 
+            //     // console.log(getError)
+            //     // throw new Error(nameError)
+            // }
             dispatch(setNewBrand(response.data))
         })
     }
@@ -52,7 +57,7 @@ export function setNewBrand(result) {
         return {
                 type : 'CREATE_BRAND_FAILL',
                 status: result.success,
-                message: message
+                message: result.message.name
             }
     }
     return {

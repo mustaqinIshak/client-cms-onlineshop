@@ -41,7 +41,7 @@ const brandReducer = (state = initialState, action) => {
             return {
                 ...state,
                 status: action.result,
-                message: action.message
+                error_message: action.message
             }
         default:
             return state

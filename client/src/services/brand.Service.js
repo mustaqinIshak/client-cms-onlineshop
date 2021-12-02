@@ -24,7 +24,8 @@ function post(apiEndpoint, payload) {
         return response
     })
     .catch((error) => {
-        return error.response
+        console.log(error.response.data.message.name.join(','))
+        throw Error (error.response.data.message.name.join(',')) 
     })
 }
 

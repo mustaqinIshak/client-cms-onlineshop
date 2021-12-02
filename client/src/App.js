@@ -7,7 +7,7 @@ import {PrivateRoute} from "./components/PrivateRoute"
 import Home from "./components/home/home.component"
 import Product from "./components/product/product.component"
 import Order from "./components/Order/order.component"
-import {Brand} from "./components/brand/brand.component"
+import Brand from "./components/brand/brand.component"
 
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';

@@ -1,7 +1,8 @@
 import { userService } from '../services';
-import { history } from '../helpers';
+// import {useHistory} from 'react-router-dom'
 
-function login(username, password) {
+function Login(username, password) {
+    // const History = useHistory()
     return dispatch => {
         let apiEndpoint = 'user/login';
         let payload = {
@@ -10,6 +11,7 @@ function login(username, password) {
         }
         userService.post(apiEndpoint, payload)
         .then((response) => {
+            console.log(response)
             if(response === undefined) {
                 const data = {
                     auth: false,
@@ -27,18 +29,18 @@ function login(username, password) {
                 localStorage.setItem('username', response.data.user.name)
                 localStorage.setItem('accLevel', response.data.user.accesslevel)
                 dispatch(setUserDetails(response.data))
-                history.push('/home')
+                // History.push('/home')
             }
         })
     }
 }
 
-function logout() {
+function Logout() {
     return dispatch => {
         localStorage.removeItem('auth')
         localStorage.removeItem('token')
         dispatch(logOutUser())
-        history.push('/')
+        // History.push('/')
     }
 }
 
@@ -67,6 +69,6 @@ export function logOutUser() {
 }
 
 export const userActions = {
-    login,
-    logout
+    Login,
+    Logout
 }

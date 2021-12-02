@@ -1,6 +1,8 @@
 import React, {Component, useState} from "react";
 import * as ReactBoostrap from "react-bootstrap"
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
+import { Redirect } from "react-router";
 import {brandAction} from "../../actions/brand.action"
 
 class CreateBrand extends Component {
@@ -9,21 +11,11 @@ class CreateBrand extends Component {
         this.state = {
             validate: false,
             setValidate: false,
+            error: false,
             name: '',
             country: '',
             consigment: 0
         }
-    }
-
-    handdleSubmit = (event) => {
-        // const form = event.currentTarget
-        // if(form.checkValidity() === false) {
-        //     event.preventDefault()
-        //     event.stopPropagation()
-        // }
-        // this.setState = {
-        //     setValidate: true
-        // }
     }
 
     handleChange = props => event => {
@@ -43,11 +35,15 @@ class CreateBrand extends Component {
                 consigment: consigment
             }
             dispatch(brandAction.createBrand(payload))
+            .then(res => {
+                console.log('ini d create'. res)
+            })
         }
         
     }
 
     render() {
+        
         return(
             <ReactBoostrap.Container>
                 <ReactBoostrap.Form>
@@ -106,7 +102,10 @@ class CreateBrand extends Component {
 }
 
 const mapStateToProps = (state) => {
-    return
+    const errors = state.brand.error_message
+    if(errors){
+        return {errors}
+    }
 }
 
 export default connect(mapStateToProps)(CreateBrand)

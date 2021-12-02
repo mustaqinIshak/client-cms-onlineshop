@@ -1,10 +1,11 @@
-import React, {Component, useState} from "react";
+import React, {Component, useState, useEffect} from "react";
 import * as ReactBt from "react-bootstrap"
-import { connect } from "react-redux";
+import { connect, useDispatch } from "react-redux";
 import { brandAction } from "../../actions/brand.action";
 import { withRouter } from "react-router-dom";
 import SearchBrand from "./brandSearch.component";
 import CreateBrand from "./createBrand.component";
+import { userActions } from "../../actions";
 
 import Nav from "../nav/nav.component"
 
@@ -36,91 +37,69 @@ function ShowCreateBrand() {
     )
 }
 
-class Brand extends Component {
+const Brand = (props) => {
+    const [message, setMessage] = useState(null)
+    const [result, setResult] = useState(props.brand.brands)
+    const dispatch = useDispatch()
+    
+    // dispatch(brandAction.showAllBrands())
+    // setResult(props.brand)
 
-    componentDidMount() {
-        const {dispatch} = this.props  
-        dispatch(brandAction.showAllBrands())
-    }
 
-
-    showResult(result) {
-      return result.map((item) => {
-        return (
-            <tr>
-                <th>{item.id}</th>
-                <th>{item.name}</th>
-                <th>{item.country}</th>
-                <th>{item.consigment}</th>
-                <th>blum ada</th>
-            </tr>
-        )
+    const ShowResult = () => {
+        console.log('masuk sii', props)
+        return result.map((item) => {
+            return (
+                <tr>
+                    <th>{item.id}</th>
+                    <th>{item.name}</th>
+                    <th>{item.country}</th>
+                    <th>{item.consigment}</th>
+                    <th>blum ada</th>
+                </tr>
+            )
         })
     }
-
-    render() {
-        const brand = this.props.brand
-        const message = this.props.message
-        const {result} = this.props
     
-        return (
-            <div className="brand-grid-container">
-                <Nav/>
-                <div className="brand">
-                    <div>
-                        {message ? <ReactBt.Alert variant="danger">{message}</ReactBt.Alert> : null }
-                    </div>
-                    <div className='search-brand'>
-                        <SearchBrand />
-                    </div>
-                    <div className='create-brand'>
-                    <CreateBrand />
-                    </div>
-                    <ReactBt.Table responsive>
-                        <thead>
-                            <tr>
-                               <th>#</th>
-                               <th>name</th> 
-                               <th>country</th>
-                               <th>consigment</th>
-                               <th>action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            { 
-                                !result ? this.showResult(brand) : this.showResult(result)
-                                
-                            }
-                        </tbody>
-                    </ReactBt.Table>
+    return (
+        <div className="brand-grid-container">
+            <Nav/>
+            <div className="brand">
+                <div>
+                    {message ? <ReactBt.Alert variant="danger">{message}</ReactBt.Alert> : null }
                 </div>
+                <div className='search-brand'>
+                    <SearchBrand />
+                </div>
+                <div className='create-brand'>
+                    <ShowCreateBrand />
+                </div>
+                <ReactBt.Table responsive>
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>name</th> 
+                            <th>country</th>
+                            <th>consigment</th>
+                            <th>action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {result && ShowResult()}
+                    </tbody>
+                </ReactBt.Table>
             </div>
-        )
-    }
+        </div>
+    )
 }
 
 
 function mapStateToProps(state) {
-    const brand = state.brand.brands
-    const message = state.brand.message
-
-    if(message) {
-        return {
-            brand,
-            message
-        }
-    } else if(state.brand.result) {
-        return {
-            brand,
-            result: state.brand.result
-        }
-    }
+    console.log('ini d mapstate',state)
     return {
-        brand
+        brand : state.brand
     }
 }
 
-const connectedBrandPage = withRouter(connect(mapStateToProps, null, null, {
-    pure: false
-})(Brand))
-export {connectedBrandPage as Brand}
+
+export default connect(mapStateToProps)(Brand)

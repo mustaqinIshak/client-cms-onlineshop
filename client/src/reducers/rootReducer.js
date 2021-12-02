@@ -1,5 +1,3 @@
-"use strict"
-
 import { combineReducers } from "redux"
 import authReducer from "./authReducer"
 import brandReducer from "./brandReducer"
