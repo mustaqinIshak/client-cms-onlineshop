@@ -18,6 +18,7 @@
 .sidebar-button:hover {
     background-color: #234d07;
     border-left: 4px solid #72FF13;
+    transition: all .35s ease !important;
     cursor: pointer;
 }
 
